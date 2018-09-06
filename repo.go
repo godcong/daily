@@ -13,7 +13,11 @@ func FilterRepoUrl() {
 
 }
 
-func GetRepoDate(url string) interface{} {
+func GetRepoInfo(url string) interface{} {
 	repos := HTTPGet(RepoUrl, nil, nil)
 	return repos
+}
+
+func GetRepoUpdateAt(repo interface{}) {
+
 }
