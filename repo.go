@@ -12,3 +12,8 @@ func GetRepos() interface{} {
 func FilterRepoUrl() {
 
 }
+
+func GetRepoDate(url string) interface{} {
+	repos := HTTPGet(RepoUrl, nil, nil)
+	return repos
+}
