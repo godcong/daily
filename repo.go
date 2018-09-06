@@ -26,7 +26,7 @@ func GetRepoUpdateAt(repo interface{}) {
 	if repo == nil {
 		return
 	}
-	log.Println(repo)
+	//log.Println(repo)
 	if v, b := repo.(map[string]interface{}); b {
 		if vv, b := v["updated_at"]; b {
 			log.Println(vv)

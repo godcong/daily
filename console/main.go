@@ -2,7 +2,6 @@ package main
 
 import (
 	"github.com/godcong/daily"
-	"log"
 )
 
 func main() {
@@ -14,7 +13,7 @@ func main() {
 				if v, b := rr["url"]; b {
 					if vv, b := v.(string); b {
 						repoInfo := daily.GetRepoInfo(vv)
-						log.Println(v)
+						//log.Println(v)
 						daily.GetRepoUpdateAt(repoInfo)
 					}
 
