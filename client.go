@@ -20,6 +20,10 @@ func DefaultClient() *Client {
 	}
 }
 
+func HTTPGet(url string, header, query map[string]interface{}) map[string]interface{} {
+	return DefaultClient().HTTPGet(url, header, query)
+}
+
 func (c *Client) HTTPGet(url string, header, query map[string]interface{}) map[string]interface{} {
 	request, err := http.NewRequest("GET", url, nil)
 	if err != nil {
