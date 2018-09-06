@@ -13,8 +13,9 @@ func main() {
 			if rr, b := (repo).(map[string]interface{}); b {
 				if v, b := rr["url"]; b {
 					if vv, b := v.(string); b {
-						data := daily.GetRepoInfo(vv)
-						log.Println(data)
+						repoInfo := daily.GetRepoInfo(vv)
+						log.Println(v)
+						daily.GetRepoUpdateAt(repoInfo)
 					}
 
 				}

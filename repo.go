@@ -1,11 +1,12 @@
 package daily
 
-import "net/url"
+import (
+	"log"
+)
 
 func GetRepos() interface{} {
-	values := make(url.Values)
-	values.Add("per_page", "100")
-	repos := HTTPGet(RepoUrl, nil, values)
+
+	repos := HTTPGet(RepoUrl, defaultHeader(), defaultQuery())
 	return repos
 }
 
@@ -14,10 +15,19 @@ func FilterRepoUrl() {
 }
 
 func GetRepoInfo(url string) interface{} {
-	repos := HTTPGet(RepoUrl, nil, nil)
+	repos := HTTPGet(url, defaultHeader(), defaultQuery())
 	return repos
 }
 
 func GetRepoUpdateAt(repo interface{}) {
+	if repo == nil {
+		return
+	}
+	log.Println(repo)
+	if v, b := repo.(map[string]interface{}); b {
+		if vv, b := v["updated_at"]; b {
+			log.Println(vv)
+		}
+	}
 
 }

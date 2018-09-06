@@ -25,12 +25,13 @@ func HTTPGet(url string, header http.Header, query url.Values) interface{} {
 	return DefaultClient().HTTPGet(url, header, query)
 }
 
-func (c *Client) HTTPGet(url string, header http.Header, query url.Values) interface{} {
+func (c *Client) HTTPGet(uri string, header http.Header, query url.Values) interface{} {
 
 	if query != nil {
-		url += "?" + query.Encode()
+		uri = uri + "?" + query.Encode()
 	}
-	request, err := http.NewRequest("GET", url, nil)
+
+	request, err := http.NewRequest("GET", uri, nil)
 	if err != nil {
 		return nil
 	}
@@ -43,7 +44,6 @@ func (c *Client) HTTPGet(url string, header http.Header, query url.Values) inter
 	rData, err := ioutil.ReadAll(io.LimitReader(response.Body, 1<<20))
 	//result := make(map[string]interface{})
 	var result interface{}
-	log.Println(string(rData))
 	err = json.Unmarshal(rData, &result)
 	if err != nil {
 		log.Println(err.Error())
