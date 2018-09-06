@@ -5,8 +5,8 @@ import (
 	"encoding/json"
 	"io"
 	"io/ioutil"
+	"log"
 	"net/http"
-	"strings"
 )
 
 /*Client Client */
@@ -21,7 +21,7 @@ func DefaultClient() *Client {
 }
 
 func (c *Client) HTTPGet(url string, header, query map[string]interface{}) map[string]interface{} {
-	request, err := http.NewRequest("get", url, strings.NewReader(""))
+	request, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		return nil
 	}
@@ -33,6 +33,7 @@ func (c *Client) HTTPGet(url string, header, query map[string]interface{}) map[s
 	defer response.Body.Close()
 	rData, err := ioutil.ReadAll(io.LimitReader(response.Body, 1<<20))
 	result := make(map[string]interface{})
+	log.Println(string(rData))
 	err = json.Unmarshal(rData, &result)
 	if err != nil {
 		return nil

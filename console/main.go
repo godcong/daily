@@ -6,6 +6,6 @@ import (
 )
 
 func main() {
-	result := daily.DefaultClient().HTTPGet("https://api.github.com/godcong", nil, nil)
+	result := daily.DefaultClient().HTTPGet("https://api.github.com/users/godcong", nil, nil)
 	log.Println(result)
 }
