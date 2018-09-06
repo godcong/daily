@@ -15,16 +15,19 @@ type Client struct {
 	client *http.Client
 }
 
+//DefaultClient DefaultClient
 func DefaultClient() *Client {
 	return &Client{
 		client: http.DefaultClient,
 	}
 }
 
+//HTTPGet HTTPGet
 func HTTPGet(url string, header http.Header, query url.Values) interface{} {
 	return DefaultClient().HTTPGet(url, header, query)
 }
 
+//HTTPGet HTTPGet
 func (c *Client) HTTPGet(uri string, header http.Header, query url.Values) interface{} {
 
 	if query != nil {

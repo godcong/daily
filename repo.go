@@ -4,6 +4,7 @@ import (
 	"log"
 )
 
+//GetRepos GetRepos
 func GetRepos() interface{} {
 
 	repos := HTTPGet(RepoUrl, defaultHeader(), defaultQuery())
@@ -14,11 +15,13 @@ func FilterRepoUrl() {
 
 }
 
+//GetRepoInfo  GetRepoInfo
 func GetRepoInfo(url string) interface{} {
 	repos := HTTPGet(url, defaultHeader(), defaultQuery())
 	return repos
 }
 
+//GetRepoUpdateAt GetRepoUpdateAt
 func GetRepoUpdateAt(repo interface{}) {
 	if repo == nil {
 		return
