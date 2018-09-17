@@ -5,18 +5,19 @@ import (
 )
 
 type Repository struct {
+	url   string
 	repos interface{}
 }
 
 //GetRepos GetRepos
-func GetRepos() interface{} {
-	repos := HTTPGet(RepoUrl, defaultHeader(), defaultQuery())
+func Repos(url string) *Repository {
+	repos := HTTPGet(url, defaultHeader(), defaultQuery())
 	return repos
 }
 
 //GetRepoInfo  GetRepoInfo
-func GetRepoInfo(repos interface{}) interface{} {
-
+func getRepoInfo(repos *Repository) interface{} {
+	return
 }
 
 //GetRepoUpdateAt GetRepoUpdateAt
