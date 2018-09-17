@@ -10,14 +10,14 @@ type Repository struct {
 }
 
 //GetRepos GetRepos
-func Repos(url string) *Repository {
+func Repos(url string, opts ...map[string]string) *Repository {
 	repos := HTTPGet(url, defaultHeader(), defaultQuery())
 	return repos
 }
 
 //GetRepoInfo  GetRepoInfo
 func getRepoInfo(repos *Repository) interface{} {
-	return
+	return nil
 }
 
 //GetRepoUpdateAt GetRepoUpdateAt
