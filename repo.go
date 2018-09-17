@@ -4,21 +4,19 @@ import (
 	"log"
 )
 
+type Repository struct {
+	repos interface{}
+}
+
 //GetRepos GetRepos
 func GetRepos() interface{} {
-
 	repos := HTTPGet(RepoUrl, defaultHeader(), defaultQuery())
 	return repos
 }
 
-func FilterRepoUrl() {
-
-}
-
 //GetRepoInfo  GetRepoInfo
-func GetRepoInfo(url string) interface{} {
-	repos := HTTPGet(url, defaultHeader(), defaultQuery())
-	return repos
+func GetRepoInfo(repos interface{}) interface{} {
+
 }
 
 //GetRepoUpdateAt GetRepoUpdateAt

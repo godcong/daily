@@ -23,12 +23,12 @@ func DefaultClient() *Client {
 }
 
 //HTTPGet HTTPGet
-func HTTPGet(url string, header http.Header, query url.Values) interface{} {
+func HTTPGet(url string, header http.Header, query url.Values) *Repository {
 	return DefaultClient().HTTPGet(url, header, query)
 }
 
 //HTTPGet HTTPGet
-func (c *Client) HTTPGet(uri string, header http.Header, query url.Values) interface{} {
+func (c *Client) HTTPGet(uri string, header http.Header, query url.Values) *Repository {
 
 	if query != nil {
 		uri = uri + "?" + query.Encode()
@@ -52,7 +52,10 @@ func (c *Client) HTTPGet(uri string, header http.Header, query url.Values) inter
 		log.Println(err.Error())
 		return nil
 	}
-	return result
+	repository := &Repository{
+		repos: result,
+	}
+	return repository
 }
 
 func (c *Client) HTTPPost(url string, header, query, param map[string]interface{}) map[string]interface{} {
