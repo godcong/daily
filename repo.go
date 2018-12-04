@@ -6,7 +6,7 @@ import (
 
 type Repository struct {
 	url   string
-	repos interface{}
+	repos []map[string]interface{}
 }
 
 type RepositoryInfo interface{}
